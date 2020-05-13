@@ -1,6 +1,12 @@
 package br.com.tokiomarine.seguradora.avaliacao.entidade;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -18,10 +24,12 @@ public class Estudante {
 
     @Column(name="nome" , nullable = false)
     @NotNull(message = "Nome é obrigatório")
+    @NotBlank(message = "Nome é obrigatório")
     private String nome;
 
     @Column(name="email" , nullable = false)
     @NotNull(message = "E-mail é obrigatório")
+    @NotBlank(message = "E-mail é obrigatório")
     private String email;
 
     @Column(name="telefone")
@@ -29,6 +37,7 @@ public class Estudante {
 
     @Column(name="matricula" , nullable = false)
     @NotNull(message =  "Matrícula é obrigatório")
+    @NotBlank(message = "Matrícula é obrigatório")
     private String matricula;
 
     @Column

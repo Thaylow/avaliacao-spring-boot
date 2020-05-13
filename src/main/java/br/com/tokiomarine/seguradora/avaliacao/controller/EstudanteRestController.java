@@ -1,14 +1,19 @@
 package br.com.tokiomarine.seguradora.avaliacao.controller;
 
-import br.com.tokiomarine.seguradora.avaliacao.entidade.Estudante;
-import br.com.tokiomarine.seguradora.avaliacao.service.EstudanteService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Optional;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.tokiomarine.seguradora.avaliacao.entidade.Estudante;
+import br.com.tokiomarine.seguradora.avaliacao.service.EstudanteService;
 
 @RestController
 @RequestMapping("/api/estudantes")
@@ -25,7 +30,6 @@ public class EstudanteRestController {
         service.cadastrarEstudante(estudante);
     }
 
-	// TODO IMPLEMENTAR ATUALIZACAO DE ESTUDANTES (PUT)
     @RequestMapping(value = "/editar/{id}", method =  RequestMethod.PUT)
     public ResponseEntity<Estudante> Put(@PathVariable(value = "id") long id, @Valid @RequestBody Estudante newEstudante){
         newEstudante.setId(id);
